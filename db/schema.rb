@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831174235) do
+ActiveRecord::Schema.define(version: 20170831185902) do
+
+  create_table "credits", force: :cascade do |t|
+    t.integer "debtor_id"
+    t.date "date"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "USD", null: false
+    t.integer "rate"
+    t.integer "arrears_rate"
+    t.integer "payment_period_in_months"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["debtor_id"], name: "index_credits_on_debtor_id"
+  end
 
   create_table "debtors", force: :cascade do |t|
     t.string "name"

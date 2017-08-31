@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Debtor:
+  = @credit.debtor.name
+%p
+  %b Date:
+  = @credit.date
+%p
+  %b Amount:
+  = @credit.amount
+%p
+  %b Rate:
+  = @credit.rate
+%p
+  %b Arrears rate:
+  = @credit.arrears_rate
+%p
+  %b Payment period in months:
+  = @credit.payment_period_in_months
+
+= link_to 'Edit', edit_credit_path(@credit)
+\|
+= link_to 'Back', credits_path

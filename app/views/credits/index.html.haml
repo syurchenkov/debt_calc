@@ -1,0 +1,31 @@
+%h1 Listing credits
+
+%table
+  %thead
+    %tr
+      %th Debtor
+      %th Date
+      %th Amount
+      %th Rate
+      %th Arrears rate
+      %th Payment period in months
+      %th
+      %th
+      %th
+
+  %tbody
+    - @credits.each do |credit|
+      %tr
+        %td= credit.debtor.name
+        %td= credit.date
+        %td= credit.amount
+        %td= credit.rate
+        %td= credit.arrears_rate
+        %td= credit.payment_period_in_months
+        %td= link_to 'Show', credit
+        %td= link_to 'Edit', edit_credit_path(credit)
+        %td= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Credit', new_credit_path

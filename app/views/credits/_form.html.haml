@@ -1,0 +1,13 @@
+= simple_form_for(@credit) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :debtor
+    = f.input :date
+    = f.input :amount
+    = f.input :rate
+    = f.input :arrears_rate
+    = f.input :payment_period_in_months
+
+  .form-actions
+    = f.button :submit
