@@ -1,2 +1,19 @@
-%h1 DebtCalc#main
-%p Find me in app/views/debt_calc/main.html.haml
+.row
+
+  .col-md-6
+    .jumbotron.calc
+      %h2.text-center 
+        Калькулятор ожидаемой доходности
+      .form-group
+        %label 
+          Сумма вклада
+        %input.form-control{ placeholder: 'Сумма вклада' }
+      %button.btn.btn-primary
+        Рассчитать
+  
+  .col-md-6
+    .jumbotron.calc
+      %h2.text-center
+        Фактическая доходность
+
+
