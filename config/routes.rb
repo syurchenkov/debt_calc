@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'debt_calc#main'
+
   resources :payments
   resources :credits
   resources :debtors
