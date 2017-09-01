@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831185902) do
+ActiveRecord::Schema.define(version: 20170901163813) do
 
   create_table "credits", force: :cascade do |t|
     t.integer "debtor_id"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20170831185902) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "credit_id"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "USD", null: false
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["credit_id"], name: "index_payments_on_credit_id"
   end
 
 end

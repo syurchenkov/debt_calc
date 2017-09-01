@@ -1,4 +1,6 @@
 class Credit < ApplicationRecord
+  has_many :payments
+
   belongs_to :debtor
 
   validates :rate, numericality: { only_integer: true }
@@ -7,4 +9,8 @@ class Credit < ApplicationRecord
   validates :date, date: true
 
   monetize :amount_cents
+
+  def to_s 
+    format("%d %s, %s, %s", id, date, debtor.name, amount)
+  end
 end

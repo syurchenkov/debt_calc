@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Debtor, type: :model do
+  it { is_expected.to have_many(:credits) }
+  it { is_expected.to have_many(:payments).through(:credits) }
 
   context 'validations' do 
     it { is_expected.to validate_presence_of :name }
