@@ -13,4 +13,8 @@ class Credit < ApplicationRecord
   def to_s 
     format("%d %s, %s, %s", id, date, debtor.name, amount)
   end
+
+  def month_payment 
+    amount / payment_period_in_months
+  end
 end

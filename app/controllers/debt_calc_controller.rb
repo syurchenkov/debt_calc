@@ -1,9 +1,14 @@
 class DebtCalcController < ApplicationController
   def main
-  end
+    @credits = Credit.includes(:debtor).all
 
-  private 
-    def debt_calc_params
-      params.permit(:credit_id)
+    credit_income_command = ComputeCreditIncome.call(params[:credit_id])
+    
+    if credit_income_command.success?
+      @income_view = credit_income_command.result
+    else 
+      flash.now[:danger] = credit_income_command.errors[:credit]
+      @income_view = nil
     end
+  end
 end

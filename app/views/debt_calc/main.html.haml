@@ -15,5 +15,30 @@
     .jumbotron.calc
       %h2.text-center
         Фактическая доходность
+      .list-group
+        - @credits.each do |credit| 
+          = link_to credit.to_s, root_path(credit_id: credit.id), class: 'list-group-item'
+      - if @income_view
+
+        %h3
+          Кредит:
+          %small
+            = @income_view.credit
+
+        %h3
+          Выплачено ОД:
+          %small
+            = @income_view.main_debt_payments
+            
+        %h3
+          Выплачено %:
+          %small
+            = @income_view.payments_of_interest
+
+        %h3
+          Доходность годовых %:
+          %small
+            = @income_view.real_income
+        
 
 

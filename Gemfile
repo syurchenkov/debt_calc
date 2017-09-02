@@ -24,6 +24,8 @@ gem 'bootstrap-will_paginate'
 
 # handling currency
 gem 'money-rails', '~>1'
+# service objects
+gem 'simple_command'
 
 
 group :development, :test do
