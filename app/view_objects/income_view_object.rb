@@ -8,6 +8,6 @@ class IncomeViewObject
   end
 
   def real_income 
-    ((@payments_of_interest / @main_debt_payments).to_f * 100).round
+    ((@payments_of_interest / @main_debt_payments).to_f * 12 / @credit.payment_period_in_months * 100).round
   end
 end
