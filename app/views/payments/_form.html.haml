@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :credit
+    = f.association :credit, collection: Credit.includes(:debtor)
     = f.input :amount
     = f.input :date
 
