@@ -26,6 +26,8 @@ gem 'bootstrap-will_paginate'
 gem 'money-rails', '~>1'
 # service objects
 gem 'simple_command'
+# static code analyzer
+gem 'rubocop', '~> 0.49.1', require: false
 
 
 group :development, :test do
