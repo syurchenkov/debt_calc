@@ -15,21 +15,13 @@ describe ComputeCreditIncome do
         expect(compute_credit_income).to be_success 
       end
 
-      it 'result is income_view_object' do 
-        expect(result).to be_instance_of(IncomeViewObject)
-      end
-
       it 'result.main_debt_payments eq 100' do 
-        expect(result.main_debt_payments).to eq(Money.new(10000))
+        expect(result.first).to eq(Money.new(10000))
       end 
 
       it 'result.payments_of_interest eq 4' do 
-        expect(result.payments_of_interest).to eq(Money.new(400))
+        expect(result.second).to eq(Money.new(400))
       end 
-
-      it 'result.real_income eq 12' do 
-        expect(result.real_income).to eq(12)
-      end
     end
 
     context 'when credit is not exist' do 
