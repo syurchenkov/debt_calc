@@ -10,11 +10,11 @@ class Credit < ApplicationRecord
 
   monetize :amount_cents
 
-  def to_s 
-    format("%d %s, %s, %s", id, date, debtor.name, amount)
+  def to_s
+    format('%d %s, %s, %s', id, date, debtor.name, amount)
   end
 
-  def month_payment 
+  def month_payment
     amount / payment_period_in_months
   end
 end
