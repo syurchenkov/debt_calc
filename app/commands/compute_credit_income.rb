@@ -12,11 +12,15 @@ class ComputeCreditIncome
 
       payments_sum = credit.payments.map(&:amount).reduce(:+)
 
-      main_debt_payments = credit.month_payment * credit.payment_period_in_months
+      main_debt = credit.month_payment * credit.payments.count
 
-      payments_of_interest = payments_sum - main_debt_payments
+      if credit.has_early_repayment?
+        main_debt += credit.month_payment * (credit.payment_period_in_months - credit.payments.count)
+      end
 
-      return main_debt_payments, payments_of_interest, credit
+      payments_of_interest = payments_sum - main_debt
+
+      return main_debt, payments_of_interest, credit
     elsif credit.nil?
       errors.add(:credit, 'Credit is not found')
     else
