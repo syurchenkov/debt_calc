@@ -18,11 +18,11 @@ class Credit < ApplicationRecord
     amount / payment_period_in_months
   end
 
-  def month_rate_payment 
+  def regular_payment 
     month_payment + amount * rate / 100 / 12
   end
 
-  def month_arrear_payment
+  def arrear_payment
     month_payment + amount * arrears_rate / 100 / 12
   end
 
