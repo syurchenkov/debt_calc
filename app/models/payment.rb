@@ -11,7 +11,7 @@ class Payment < ApplicationRecord
   private 
 
   def validate_credit_payments_limit
-    return nil if credit.payments.size < credit.payment_period_in_months
+    return nil if credit.can_add_payment?
     errors.add(:credit, 'has maximum number of payments')
     raise ActiveRecord::Rollback
   end

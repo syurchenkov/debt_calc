@@ -29,4 +29,12 @@ class Credit < ApplicationRecord
   def early_repayment
     (payment_period_in_months - payments.count - 1) * month_payment
   end
+
+  def can_add_payment?
+    (payments.size < payment_period_in_months) && !has_early_repayment?
+  end 
+
+  def has_early_repayment?
+    payments.exists?(is_early_repayment: true)
+  end
 end
