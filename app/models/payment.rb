@@ -29,12 +29,10 @@ class Payment < ApplicationRecord
     nil
   end
 
-  private
-
   def amount_match_payment(amount, payment, name_of_payment)
     amount -= payment
     return amount unless amount.negative?
-    errors.add(:amount, "does not match #{ name_of_payment } (#{ (-amount).to_s })")
+    errors.add(:amount, "does not match #{ name_of_payment } (#{ (-amount) })")
     raise ActiveRecord::Rollback
   end
 
