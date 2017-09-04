@@ -19,6 +19,22 @@
   %b Payment period in months:
   = @credit.payment_period_in_months
 
+%p.lead
+  %b 
+    Payments
+
+%table.table
+  %thead
+    %tr
+      %th Amount 
+      %th Date
+      %th Early Repayment
+      %th
+      %th
+      %th
+  %tbody
+    = render @credit.payments
+
 = link_to 'Edit', edit_credit_path(@credit)
 \|
 = link_to 'Back', credits_path

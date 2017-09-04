@@ -1,0 +1,7 @@
+%tr
+  %td= payment.amount
+  %td= payment.date
+  %td= payment.is_early_repayment
+  %td= link_to 'Show', payment
+  %td= link_to 'Edit', edit_payment_path(payment)
+  %td= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' }
