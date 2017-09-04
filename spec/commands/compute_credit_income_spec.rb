@@ -7,9 +7,8 @@ describe ComputeCreditIncome do
 
   describe '.call' do 
     context 'when credit with payments exists' do 
-      let!(:credit) { create(:credit, amount: 100, rate: 12, payment_period_in_months: 4) }
+      let!(:credit) { create(:credit_with_payments, amount: 100, rate: 12, payment_period_in_months: 4) }
       let!(:credit_id) { credit.id }
-      let!(:payments) { Array.new(4) { create(:payment, amount: 26, credit: credit) }}
 
       it 'succeeds' do 
         expect(compute_credit_income).to be_success 

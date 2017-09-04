@@ -26,12 +26,12 @@ RSpec.describe Credit, type: :model do
       expect(credit.month_payment).to eq(Money.from_amount(1000))
     end
 
-    it 'month_rate_payment == 1000 + 100' do 
-      expect(credit.month_rate_payment).to eq(Money.from_amount(1100))
+    it 'regular_payment == 1000 + 100' do 
+      expect(credit.regular_payment).to eq(Money.from_amount(1100))
     end
 
-    it 'month_arrear_payment == 1000 + 200' do 
-      expect(credit.month_arrear_payment).to eq(Money.from_amount(1200))
+    it 'arrear_payment == 1000 + 200' do 
+      expect(credit.arrear_payment).to eq(Money.from_amount(1200))
     end
 
     it 'early_repayment == 9000' do 
