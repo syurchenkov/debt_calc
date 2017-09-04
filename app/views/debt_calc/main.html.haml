@@ -3,40 +3,40 @@
   .col-md-6
     .jumbotron.calc
       %h2.text-center 
-        Калькулятор ожидаемой доходности
+        Expected Income
       .form-group
         %label 
-          Сумма вклада
-        %input.form-control{ placeholder: 'Сумма вклада' }
+          Amount
+        %input.form-control{ placeholder: 'Amount' }
       %button.btn.btn-primary
-        Рассчитать
+        Calculate
   
   .col-md-6
     .jumbotron.calc
       %h2.text-center
-        Фактическая доходность
+        Actual Income
       .list-group
         - @credits.each do |credit| 
           = link_to credit.to_s, root_path(credit_id: credit.id), class: 'list-group-item'
       - if @income_view
 
         %h3
-          Кредит:
+          Credit:
           %small
             = @income_view.credit
 
         %h3
-          Выплачено ОД:
+          Paid Out Main Debt:
           %small
             = @income_view.main_debt_payments
             
         %h3
-          Выплачено %:
+          Paid out:
           %small
             = @income_view.payments_of_interest
 
         %h3
-          Доходность годовых %:
+          Actual Income %:
           %small
             = @income_view.real_income
         
