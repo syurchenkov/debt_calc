@@ -1,0 +1,17 @@
+%tr  
+  %td 
+    = credit.date
+  %td
+    = credit.amount
+  %td
+    = credit.rate
+  %td
+    = credit.arrears_rate
+  %td
+    = credit.payment_period_in_months
+  %td
+    = link_to 'Show', credit
+  %td
+    = link_to 'Edit', edit_credit_path(credit)
+  %td
+    = link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' }

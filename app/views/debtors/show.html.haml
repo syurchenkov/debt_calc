@@ -3,6 +3,21 @@
 %p
   %b Name:
   = @debtor.name
+%p
+  %b 
+    Credits
+
+%table.table
+  %thead
+    %tr
+      %th Date
+      %th Amount
+      %th Rate
+      %th Arrears rate
+      %th Payment period in months
+  %tbody
+    = render @debtor.credits
+
 
 = link_to 'Edit', edit_debtor_path(@debtor)
 \|
