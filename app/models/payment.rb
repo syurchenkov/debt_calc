@@ -18,21 +18,22 @@ class Payment < ApplicationRecord
 
   def validate_payment
     payment_amount = amount.dup
-    if is_arrear == '0'
+    if is_arrear == '1' && !is_early_repayment
       amount_match_payment(payment_amount, credit.arrear_payment, 'arrear payment')
-    else 
+    elsif is_arrear == '0' && !is_early_repayment
       amount_match_payment(payment_amount, credit.regular_payment, 'regular payment')
-    end
-    if is_early_repayment == '1'
-      amount_match_payment(payment_amount, credit.early_repayment, 'early repayment') 
+    elsif is_arrear == '1' && is_early_repayment
+      amount_match_payment(payment_amount, credit.arrear_payment + credit.early_repayment, 'early repayment') 
+    else
+      amount_match_payment(payment_amount, credit.regular_payment + credit.early_repayment, 'early repayment') 
     end
     nil
   end
 
   def amount_match_payment(amount, payment, name_of_payment)
     amount -= payment
-    return amount unless amount.negative?
-    errors.add(:amount, "does not match #{ name_of_payment } (#{ (-amount) })")
+    return amount if amount.zero?
+    errors.add(:amount, "does not match #{ name_of_payment } (#{ payment })")
     raise ActiveRecord::Rollback
   end
 
