@@ -1,3 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on('turbolinks:load', -> 
+  $('#calc-calculate').click -> 
+    amount = +$('#calc-input-amount').val()
+    period = +$('#calc-input-period').val()
+    $('#calc-output').text(amount + amount * 0.3 / 12 * period))
