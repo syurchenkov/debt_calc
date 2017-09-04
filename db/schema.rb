@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901163813) do
+ActiveRecord::Schema.define(version: 20170904074439) do
 
   create_table "credits", force: :cascade do |t|
     t.integer "debtor_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170901163813) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_early_repayment", default: false
     t.index ["credit_id"], name: "index_payments_on_credit_id"
   end
 

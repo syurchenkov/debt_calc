@@ -5,6 +5,8 @@
     = f.association :credit, collection: Credit.includes(:debtor)
     = f.input :amount
     = f.input :date
+    = f.input :is_arrear, as: :boolean
+    = f.input :is_early_repayment
 
   .form-actions
     = f.button :submit
