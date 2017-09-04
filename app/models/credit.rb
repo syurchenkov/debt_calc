@@ -17,4 +17,16 @@ class Credit < ApplicationRecord
   def month_payment
     amount / payment_period_in_months
   end
+
+  def month_rate_payment 
+    month_payment + amount * rate / 100 / 12
+  end
+
+  def month_arrear_payment
+    month_payment + amount * arrears_rate / 100 / 12
+  end
+
+  def early_repayment
+    (payment_period_in_months - payments.count - 1) * month_payment
+  end
 end
