@@ -12,12 +12,15 @@ import TurbolinksAdapter from 'vue-turbolinks'
 Vue.use(TurbolinksAdapter)
 
 document.addEventListener('turbolinks:load', () => {
-  var element = document.getElementById("calculator")
+  var element = document.getElementById("calculator");
+
   if (element != null) {
+
     var vueapp = new Vue({
       el: element,
       template: '<App/>',
-      components: { App },
+      components: { App }
     });
+
   }
 });

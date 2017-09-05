@@ -1,6 +1,31 @@
 <template>
-  <div id="app">
-    <p>{{ message }}</p>
+  <div id = 'app'>
+    <h2 class='text-center'> 
+      Expected Income
+    </h2>
+
+    <div class = 'form-group'>
+      <h3> 
+      Income
+        <small>
+          {{ income }}
+        </small>
+      </h3>
+    </div> 
+
+    <div class = 'form-group'>
+      <label> 
+        Amount
+      </label>
+      <input class = 'form-control' v-model='amount' placeholder = 'Amount' />
+    </div> 
+
+    <div class = 'form-group'>
+      <label> 
+        Period (months)
+      </label>
+      <input class = 'form-control' v-model='period' placeholder = '12' />
+    </div>
   </div>
 </template>
 
@@ -8,15 +33,15 @@
 export default {
   data: function () {
     return {
-      message: "Hello Vue!"
+      amount: '',
+      period: ''
+    }
+  },
+  computed: {
+    income: function(){
+      return +this.amount + +this.amount * 0.3 / 12 * +this.period
     }
   }
+
 }
 </script>
-
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
-</style>
