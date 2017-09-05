@@ -14,6 +14,7 @@ FactoryGirl.define do
 
       after(:create) do |credit, evaluator|
         create_list(:payment, evaluator.payments_count, credit: credit)
+        credit.reload
       end
     end
   end
