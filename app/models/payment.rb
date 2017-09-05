@@ -12,7 +12,7 @@ class Payment < ApplicationRecord
 
   def validate_credit_payments_limit
     return nil if credit.can_add_payment?
-    errors.add(:credit, 'has maximum number of payments')
+    errors.add(:credit, 'is closed')
     raise ActiveRecord::Rollback
   end
 
@@ -36,5 +36,4 @@ class Payment < ApplicationRecord
     errors.add(:amount, "does not match #{ name_of_payment } (#{ payment })")
     raise ActiveRecord::Rollback
   end
-
 end
