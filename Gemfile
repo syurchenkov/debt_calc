@@ -29,6 +29,8 @@ gem 'simple_command'
 # static code analyzer
 gem 'rubocop', '~> 0.49.1', require: false
 
+gem 'webpacker'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
